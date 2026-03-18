@@ -184,7 +184,13 @@ export default function Dashboard() {
 
           <div className="modem-indicator">
             <div className={`modem-dot ${modemStatus.connected ? 'connected' : ''}`} />
-            <span>{modemStatus.connected ? (modemStatus.simulated ? 'Simulated' : modemStatus.networkType || 'Connected') : 'Disconnected'}</span>
+            <span>
+              {modemStatus.connected
+                ? (modemStatus.gatewayMode === 'simulate' ? '🧪 Simulated'
+                  : modemStatus.gatewayMode === 'android' ? '📱 Android'
+                  : modemStatus.networkType || 'Connected')
+                : '❌ Disconnected'}
+            </span>
             <div className="signal-bars">
               {[1, 2, 3, 4, 5].map(i => (
                 <div key={i} className={`signal-bar ${i <= signalLevel ? 'active' : ''}`} />
