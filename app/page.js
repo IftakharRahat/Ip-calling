@@ -187,6 +187,7 @@ export default function Dashboard() {
             <span>
               {modemStatus.connected
                 ? (modemStatus.gatewayMode === 'simulate' ? '🧪 Simulated'
+                  : modemStatus.gatewayMode === 'traccar' ? '📱 Traccar'
                   : modemStatus.gatewayMode === 'android' ? '📱 Android'
                   : modemStatus.networkType || 'Connected')
                 : '❌ Disconnected'}
